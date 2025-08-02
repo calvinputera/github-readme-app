@@ -19,7 +19,6 @@ A modern, responsive web application for viewing GitHub user profiles, repositor
 - **Styling**: CSS Modules
 - **State Management**: React Context API with useReducer
 - **Markdown**: react-markdown
-- **UI**: Custom modern design with pixel art elements
 
 ## Getting Started
 
@@ -138,15 +137,6 @@ Built with custom CSS Modules featuring:
 - Pixel art decorative elements
 - Clean typography with Inter font
 
-## Future Enhancements
-
-- [ ] Dark mode support
-- [ ] Repository search and filtering
-- [ ] User activity timeline
-- [ ] Repository analytics
-- [ ] Export functionality
-- [ ] PWA capabilities
-
 ## Contributing
 
 1. Fork the repository
@@ -158,4 +148,5 @@ Built with custom CSS Modules featuring:
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
+
 # github-readme-app

@@ -1,0 +1,281 @@
+.container {
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.header:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.searchInput {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  min-width: 200px;
+  background: white;
+  color: #1f2937;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.filterSelect {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  background: white;
+  color: #1f2937;
+  cursor: pointer;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.filterSelect option {
+  background: white;
+  color: #1f2937;
+}
+
+.repoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 1.5rem;
+}
+
+.repoCard {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.repoCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.repoCard.selected {
+  border: 2px solid #3b82f6;
+  background: #f8fafc;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.repoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.repoName {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+.readmeBadge {
+  background: #10b981;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+.repoDescription {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.repoMeta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.language {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+}
+
+.stars, .forks {
+  font-size: 0.75rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+}
+
+.repoFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.updatedAt {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.githubLink {
+  color: #1f2937;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem;
+  background: #f9fafb;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.githubLink:hover {
+  color: #1f2937;
+  background: #f3f4f6;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6b7280;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.25rem;
+  }
+  
+  .controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .searchInput {
+    min-width: auto;
+  }
+  
+  .repoGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .repoCard {
+    padding: 1.25rem;
+  }
+  
+  .repoMeta {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  .repoCard {
+    padding: 1rem;
+  }
+  
+  .repoName {
+    font-size: 1rem;
+  }
+  
+  .repoDescription {
+    font-size: 0.75rem;
+  }
+} 
