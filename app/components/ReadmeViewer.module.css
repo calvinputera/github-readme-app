@@ -103,8 +103,12 @@
   color: #374151;
 }
 
-/* Markdown Styles */
-.markdownH1 {
+.markdown {
+  line-height: 1.6;
+  color: #374151;
+}
+
+.markdown h1 {
   font-size: 1.875rem;
   font-weight: 700;
   color: #1f2937;
@@ -113,7 +117,7 @@
   border-bottom: 2px solid #e5e7eb;
 }
 
-.markdownH2 {
+.markdown h2 {
   font-size: 1.5rem;
   font-weight: 600;
   color: #1f2937;
@@ -122,50 +126,50 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-.markdownH3 {
+.markdown h3 {
   font-size: 1.25rem;
   font-weight: 600;
   color: #1f2937;
   margin: 1.25rem 0 0.75rem 0;
 }
 
-.markdownH4 {
+.markdown h4 {
   font-size: 1.125rem;
   font-weight: 600;
   color: #1f2937;
   margin: 1rem 0 0.5rem 0;
 }
 
-.markdownH5 {
+.markdown h5 {
   font-size: 1rem;
   font-weight: 600;
   color: #1f2937;
   margin: 0.75rem 0 0.5rem 0;
 }
 
-.markdownH6 {
+.markdown h6 {
   font-size: 0.875rem;
   font-weight: 600;
   color: #1f2937;
   margin: 0.5rem 0 0.25rem 0;
 }
 
-.markdownP {
+.markdown p {
   margin: 1rem 0;
   line-height: 1.7;
 }
 
-.markdownUl, .markdownOl {
+.markdown ul, .markdown ol {
   margin: 1rem 0;
   padding-left: 1.5rem;
 }
 
-.markdownLi {
+.markdown li {
   margin: 0.5rem 0;
   line-height: 1.6;
 }
 
-.markdownBlockquote {
+.markdown blockquote {
   border-left: 4px solid #10b981;
   padding-left: 1rem;
   margin: 1.5rem 0;
@@ -173,7 +177,7 @@
   font-style: italic;
 }
 
-.markdownCode {
+.markdown code {
   background: #f3f4f6;
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
@@ -182,7 +186,7 @@
   color: #dc2626;
 }
 
-.markdownPre {
+.markdown pre {
   background: #1f2937;
   color: #f9fafb;
   padding: 1rem;
@@ -194,24 +198,24 @@
   line-height: 1.5;
 }
 
-.markdownPre .markdownCode {
+.markdown pre code {
   background: none;
   padding: 0;
   color: inherit;
 }
 
-.markdownLink {
+.markdown a {
   color: #10b981;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;
 }
 
-.markdownLink:hover {
+.markdown a:hover {
   border-bottom-color: #10b981;
 }
 
-.markdownImg {
+.markdown img {
   max-width: 100%;
   height: auto;
   border-radius: 0.5rem;
@@ -219,7 +223,7 @@
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
-.markdownTable {
+.markdown table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
@@ -228,7 +232,7 @@
   overflow: hidden;
 }
 
-.markdownTh {
+.markdown th {
   background: #f9fafb;
   padding: 0.75rem;
   text-align: left;
@@ -237,7 +241,7 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-.markdownTd {
+.markdown td {
   padding: 0.75rem;
   border-bottom: 1px solid #e5e7eb;
   color: #374151;

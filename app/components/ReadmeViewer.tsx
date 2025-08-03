@@ -4,7 +4,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { useGitHub } from "../contexts/GitHubContext";
 import styles from "./ReadmeViewer.module.css";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function ReadmeViewer() {
   const { state, dispatch } = useGitHub();
@@ -55,83 +55,7 @@ export default function ReadmeViewer() {
             </div>
           ) : readmeContent ? (
             <div className={styles.readmeContent}>
-              <ReactMarkdown
-                components={{
-                  h1: ({ children }) => (
-                    <h1 className={styles.markdownH1}>{children}</h1>
-                  ),
-                  h2: ({ children }) => (
-                    <h2 className={styles.markdownH2}>{children}</h2>
-                  ),
-                  h3: ({ children }) => (
-                    <h3 className={styles.markdownH3}>{children}</h3>
-                  ),
-                  h4: ({ children }) => (
-                    <h4 className={styles.markdownH4}>{children}</h4>
-                  ),
-                  h5: ({ children }) => (
-                    <h5 className={styles.markdownH5}>{children}</h5>
-                  ),
-                  h6: ({ children }) => (
-                    <h6 className={styles.markdownH6}>{children}</h6>
-                  ),
-                  p: ({ children }) => (
-                    <p className={styles.markdownP}>{children}</p>
-                  ),
-                  ul: ({ children }) => (
-                    <ul className={styles.markdownUl}>{children}</ul>
-                  ),
-                  ol: ({ children }) => (
-                    <ol className={styles.markdownOl}>{children}</ol>
-                  ),
-                  li: ({ children }) => (
-                    <li className={styles.markdownLi}>{children}</li>
-                  ),
-                  blockquote: ({ children }) => (
-                    <blockquote className={styles.markdownBlockquote}>
-                      {children}
-                    </blockquote>
-                  ),
-                  code: ({ children, className }) => (
-                    <code
-                      className={`${styles.markdownCode} ${className || ""}`}
-                    >
-                      {children}
-                    </code>
-                  ),
-                  pre: ({ children }) => (
-                    <pre className={styles.markdownPre}>{children}</pre>
-                  ),
-                  a: ({ href, children }) => (
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.markdownLink}
-                    >
-                      {children}
-                    </a>
-                  ),
-                  img: ({ src, alt }) => (
-                    <Image
-                      src={src as string}
-                      alt={alt || ""}
-                      className={styles.markdownImg}
-                      width={100}
-                      height={100}
-                    />
-                  ),
-                  table: ({ children }) => (
-                    <table className={styles.markdownTable}>{children}</table>
-                  ),
-                  th: ({ children }) => (
-                    <th className={styles.markdownTh}>{children}</th>
-                  ),
-                  td: ({ children }) => (
-                    <td className={styles.markdownTd}>{children}</td>
-                  ),
-                }}
-              >
+              <ReactMarkdown className={styles.markdown}>
                 {readmeContent}
               </ReactMarkdown>
             </div>

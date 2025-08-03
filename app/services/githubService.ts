@@ -120,8 +120,8 @@ export async function fetchRepositories(
     );
 
     return reposWithReadme;
-  } catch (_error) {
-    throw new Error("Failed to fetch repositories");
+  } catch (error) {
+    throw new Error("Failed to fetch repositories", { cause: error });
   }
 }
 
@@ -136,7 +136,7 @@ export async function fetchReadmeContent(
 
     const content = atob(readme.content.replace(/\n/g, ""));
     return content;
-  } catch (_error) {
-    throw new Error("README not found or failed to fetch");
+  } catch (error) {
+    throw new Error("README not found or failed to fetch", { cause: error });
   }
 }
