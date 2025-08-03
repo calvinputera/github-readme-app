@@ -42,7 +42,6 @@ async function makeRequest<T>(endpoint: string): Promise<T> {
     "User-Agent": "GitHub-Project-Viewer",
   };
 
-  // Add authorization header if token is available
   if (GITHUB_TOKEN) {
     headers["Authorization"] = `token ${GITHUB_TOKEN}`;
   }
@@ -91,11 +90,9 @@ export async function fetchRepositories(
       `/users/${username}/repos?sort=updated&per_page=100`
     );
 
-    // Check for README files concurrently
     const reposWithReadme = await Promise.all(
       repos.map(async (repo: GitHubRepoResponse) => {
         try {
-          // Try to fetch README content
           await makeRequest<GitHubReadmeResponse>(
             `/repos/${username}/${repo.name}/readme`
           );
@@ -141,7 +138,6 @@ export async function fetchReadmeContent(
       `/repos/${username}/${repoName}/readme`
     );
 
-    // Decode base64 content
     const content = atob(readme.content.replace(/\n/g, ""));
     return content;
   } catch (error) {

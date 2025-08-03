@@ -3,6 +3,7 @@
 import React from "react";
 import { useGitHub } from "../contexts/GitHubContext";
 import styles from "./UserProfile.module.css";
+import Image from "next/image";
 
 export default function UserProfile() {
   const { state } = useGitHub();
@@ -14,10 +15,12 @@ export default function UserProfile() {
   return (
     <div className={styles.container}>
       <div className={styles.profile}>
-        <img
+        <Image
           src={user.avatar_url}
           alt={`${user.name || user.login} avatar`}
           className={styles.avatar}
+          width={100}
+          height={100}
         />
         <div className={styles.info}>
           <h2 className={styles.name}>{user.name || user.login}</h2>

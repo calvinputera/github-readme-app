@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useGitHub, Repository } from "../contexts/GitHubContext";
 import { fetchReadmeContent } from "../services/githubService";
 import styles from "./RepositoryList.module.css";

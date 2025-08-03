@@ -4,6 +4,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { useGitHub } from "../contexts/GitHubContext";
 import styles from "./ReadmeViewer.module.css";
+import Image from "next/image";
 
 export default function ReadmeViewer() {
   const { state, dispatch } = useGitHub();
@@ -112,7 +113,13 @@ export default function ReadmeViewer() {
                     </a>
                   ),
                   img: ({ src, alt }) => (
-                    <img src={src} alt={alt} className={styles.markdownImg} />
+                    <Image
+                      src={src as string}
+                      alt={alt || ""}
+                      className={styles.markdownImg}
+                      width={100}
+                      height={100}
+                    />
                   ),
                   table: ({ children }) => (
                     <table className={styles.markdownTable}>{children}</table>
