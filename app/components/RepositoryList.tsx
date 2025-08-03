@@ -20,7 +20,7 @@ export default function RepositoryList() {
         repo.name
       );
       dispatch({ type: "SET_README_CONTENT", payload: readmeContent });
-    } catch (error) {
+    } catch (_error) {
       dispatch({
         type: "SET_README_CONTENT",
         payload: "README not found or could not be loaded.",

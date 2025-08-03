@@ -4,10 +4,6 @@ const GITHUB_API_BASE =
   process.env.GITHUB_API_BASE_URL || "https://api.github.com";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
-interface GitHubApiResponse {
-  [key: string]: unknown;
-}
-
 interface GitHubRepoResponse {
   id: number;
   name: string;
@@ -124,7 +120,7 @@ export async function fetchRepositories(
     );
 
     return reposWithReadme;
-  } catch (error) {
+  } catch (_error) {
     throw new Error("Failed to fetch repositories");
   }
 }
@@ -140,7 +136,7 @@ export async function fetchReadmeContent(
 
     const content = atob(readme.content.replace(/\n/g, ""));
     return content;
-  } catch (error) {
+  } catch (_error) {
     throw new Error("README not found or failed to fetch");
   }
 }
