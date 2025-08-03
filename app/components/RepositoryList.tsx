@@ -20,11 +20,12 @@ export default function RepositoryList() {
         repo.name
       );
       dispatch({ type: "SET_README_CONTENT", payload: readmeContent });
-    } catch (_error) {
+    } catch (error) {
       dispatch({
         type: "SET_README_CONTENT",
         payload: "README not found or could not be loaded.",
       });
+      console.error("Error fetching README:", error);
     } finally {
       dispatch({ type: "SET_LOADING", payload: false });
     }
