@@ -23,7 +23,10 @@ export default function RepositoryList() {
     } catch (error) {
       dispatch({
         type: "SET_README_CONTENT",
-        payload: "README not found or could not be loaded.",
+        payload:
+          error instanceof Error
+            ? error.message
+            : "README not found or could not be loaded.",
       });
       console.error("Error fetching README:", error);
     } finally {
@@ -45,7 +48,7 @@ export default function RepositoryList() {
   });
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
+    return new Date(dateString).toLocaleDateString("id-ID", {
       year: "numeric",
       month: "short",
       day: "numeric",

@@ -4,6 +4,9 @@ const GITHUB_API_BASE =
   process.env.GITHUB_API_BASE_URL || "https://api.github.com";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
+const cache = new Map<string, { data: unknown; timestamp: number }>();
+const CACHE_DURATION = 10 * 60 * 1000;
+
 interface GitHubRepoResponse {
   id: number;
   name: string;
@@ -31,7 +34,26 @@ interface GitHubReadmeResponse {
   content: string;
 }
 
+function getCachedData<T>(key: string): T | null {
+  const cached = cache.get(key);
+  if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+    return cached.data as T;
+  }
+  return null;
+}
+
+function setCachedData<T>(key: string, data: T): void {
+  cache.set(key, { data, timestamp: Date.now() });
+}
+
 async function makeRequest<T>(endpoint: string): Promise<T> {
+  const cacheKey = endpoint;
+
+  const cached = getCachedData<T>(cacheKey);
+  if (cached) {
+    return cached;
+  }
+
   const url = `${GITHUB_API_BASE}${endpoint}`;
   const headers: HeadersInit = {
     Accept: "application/vnd.github.v3+json",
@@ -45,15 +67,32 @@ async function makeRequest<T>(endpoint: string): Promise<T> {
   const response = await fetch(url, { headers });
 
   if (!response.ok) {
+    let errorMessage = `GitHub API error: ${response.status} ${response.statusText}`;
+
+    try {
+      const errorData = await response.json();
+      if (errorData.message) {
+        errorMessage = errorData.message;
+      }
+    } catch {
+      errorMessage = `GitHub API error: ${response.status} ${response.statusText}`;
+    }
+
     if (response.status === 404) {
       throw new Error("User not found");
     }
-    throw new Error(
-      `GitHub API error: ${response.status} ${response.statusText}`
-    );
+    if (response.status === 403) {
+      throw new Error("Rate limit exceeded. Please try again later.");
+    }
+
+    throw new Error(errorMessage);
   }
 
-  return response.json();
+  const data = await response.json();
+
+  setCachedData(cacheKey, data);
+
+  return data;
 }
 
 export async function fetchUser(username: string): Promise<GitHubUser> {
@@ -74,7 +113,9 @@ export async function fetchUser(username: string): Promise<GitHubUser> {
     if (error instanceof Error && error.message === "User not found") {
       throw error;
     }
-    throw new Error("Failed to fetch user data");
+    throw new Error(
+      error instanceof Error ? error.message : "Failed to fetch user data"
+    );
   }
 }
 
@@ -83,7 +124,7 @@ export async function fetchRepositories(
 ): Promise<Repository[]> {
   try {
     const repos = await makeRequest<GitHubRepoResponse[]>(
-      `/users/${username}/repos?sort=updated&per_page=100`
+      `/users/${username}/repos?sort=updated&per_page=50`
     );
 
     const reposWithReadme = await Promise.all(
@@ -121,7 +162,9 @@ export async function fetchRepositories(
 
     return reposWithReadme;
   } catch (error) {
-    throw new Error("Failed to fetch repositories", { cause: error });
+    throw new Error(
+      error instanceof Error ? error.message : "Failed to fetch repositories"
+    );
   }
 }
 
@@ -137,6 +180,10 @@ export async function fetchReadmeContent(
     const content = atob(readme.content.replace(/\n/g, ""));
     return content;
   } catch (error) {
-    throw new Error("README not found or failed to fetch", { cause: error });
+    throw new Error(
+      error instanceof Error
+        ? error.message
+        : "README not found or failed to fetch"
+    );
   }
 }
