@@ -57,62 +57,89 @@ export default function ReadmeViewer() {
             <div className={styles.readmeContent}>
               <ReactMarkdown
                 components={{
-                  h1: ({ children }) => (
-                    <h1 className={styles.markdownH1}>{children}</h1>
+                  h1: ({ children, ...props }) => (
+                    <h1 className={styles.markdownH1} {...props}>
+                      {children}
+                    </h1>
                   ),
-                  h2: ({ children }) => (
-                    <h2 className={styles.markdownH2}>{children}</h2>
+                  h2: ({ children, ...props }) => (
+                    <h2 className={styles.markdownH2} {...props}>
+                      {children}
+                    </h2>
                   ),
-                  h3: ({ children }) => (
-                    <h3 className={styles.markdownH3}>{children}</h3>
+                  h3: ({ children, ...props }) => (
+                    <h3 className={styles.markdownH3} {...props}>
+                      {children}
+                    </h3>
                   ),
-                  h4: ({ children }) => (
-                    <h4 className={styles.markdownH4}>{children}</h4>
+                  h4: ({ children, ...props }) => (
+                    <h4 className={styles.markdownH4} {...props}>
+                      {children}
+                    </h4>
                   ),
-                  h5: ({ children }) => (
-                    <h5 className={styles.markdownH5}>{children}</h5>
+                  h5: ({ children, ...props }) => (
+                    <h5 className={styles.markdownH5} {...props}>
+                      {children}
+                    </h5>
                   ),
-                  h6: ({ children }) => (
-                    <h6 className={styles.markdownH6}>{children}</h6>
+                  h6: ({ children, ...props }) => (
+                    <h6 className={styles.markdownH6} {...props}>
+                      {children}
+                    </h6>
                   ),
-                  p: ({ children }) => (
-                    <p className={styles.markdownP}>{children}</p>
+                  p: ({ children, ...props }) => (
+                    <p className={styles.markdownP} {...props}>
+                      {children}
+                    </p>
                   ),
-                  ul: ({ children }) => (
-                    <ul className={styles.markdownUl}>{children}</ul>
+                  ul: ({ children, ...props }) => (
+                    <ul className={styles.markdownUl} {...props}>
+                      {children}
+                    </ul>
                   ),
-                  ol: ({ children }) => (
-                    <ol className={styles.markdownOl}>{children}</ol>
+                  ol: ({ children, ...props }) => (
+                    <ol className={styles.markdownOl} {...props}>
+                      {children}
+                    </ol>
                   ),
-                  li: ({ children }) => (
-                    <li className={styles.markdownLi}>{children}</li>
+                  li: ({ children, ...props }) => (
+                    <li className={styles.markdownLi} {...props}>
+                      {children}
+                    </li>
                   ),
-                  blockquote: ({ children }) => (
-                    <blockquote className={styles.markdownBlockquote}>
+                  blockquote: ({ children, ...props }) => (
+                    <blockquote
+                      className={styles.markdownBlockquote}
+                      {...props}
+                    >
                       {children}
                     </blockquote>
                   ),
-                  code: ({ children, className }) => (
+                  code: ({ children, className, ...props }) => (
                     <code
                       className={`${styles.markdownCode} ${className || ""}`}
+                      {...props}
                     >
                       {children}
                     </code>
                   ),
-                  pre: ({ children }) => (
-                    <pre className={styles.markdownPre}>{children}</pre>
+                  pre: ({ children, ...props }) => (
+                    <pre className={styles.markdownPre} {...props}>
+                      {children}
+                    </pre>
                   ),
-                  a: ({ href, children }) => (
+                  a: ({ href, children, ...props }) => (
                     <a
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.markdownLink}
+                      {...props}
                     >
                       {children}
                     </a>
                   ),
-                  img: ({ src, alt }) => (
+                  img: ({ src, alt, ...props }) => (
                     <Image
                       src={src as string}
                       alt={alt || ""}
@@ -121,14 +148,20 @@ export default function ReadmeViewer() {
                       height={100}
                     />
                   ),
-                  table: ({ children }) => (
-                    <table className={styles.markdownTable}>{children}</table>
+                  table: ({ children, ...props }) => (
+                    <table className={styles.markdownTable} {...props}>
+                      {children}
+                    </table>
                   ),
-                  th: ({ children }) => (
-                    <th className={styles.markdownTh}>{children}</th>
+                  th: ({ children, ...props }) => (
+                    <th className={styles.markdownTh} {...props}>
+                      {children}
+                    </th>
                   ),
-                  td: ({ children }) => (
-                    <td className={styles.markdownTd}>{children}</td>
+                  td: ({ children, ...props }) => (
+                    <td className={styles.markdownTd} {...props}>
+                      {children}
+                    </td>
                   ),
                 }}
               >
